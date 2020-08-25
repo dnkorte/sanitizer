@@ -1,3 +1,10 @@
+/*
+ * test program for Adafruit VCNL4040 optical prox sensor
+ * this code is lifted (and slightly modified from)from the Adafruit Guide for that device
+ * Guide:  https://learn.adafruit.com/adafruit-vcnl4040-proximity-sensor/overview
+ * Purchase Link: https://www.adafruit.com/product/4161
+ */
+
 #include <Adafruit_VCNL4040.h>
 
 Adafruit_VCNL4040 vcnl4040 = Adafruit_VCNL4040();

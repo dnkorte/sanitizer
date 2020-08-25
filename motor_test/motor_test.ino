@@ -1,9 +1,18 @@
 /*
-*****************************************************************************
-* SanitizerTest.ino
-* 
-* Uses: https://github.com/sparkfun/SparkFun_TB6612FNG_Arduino_Library
-* 
+ *****************************************************************************
+ * SanitizerTest.ino
+ *
+ * test program for motor attached to Adafruit TB6612 motor driver board
+ * this code is lifted (and slightly modified from)from the Sparkfun TB6612 library
+ * as described at:
+ * https://github.com/sparkfun/SparkFun_TB6612FNG_Arduino_Library
+ * https://github.com/sparkfun/SparkFun_TB6612FNG_Arduino_Library/blob/master/src/SparkFun_TB6612.h
+ * https://github.com/sparkfun/SparkFun_TB6612FNG_Arduino_Library/blob/master/examples/MotorTestRun/MotorTestRun.ino
+ * 
+ * Adafruit TB6612 board Purchase Link: https://www.adafruit.com/product/2448
+ * Adafruit Guide for TB6612: https://learn.adafruit.com/adafruit-tb6612-h-bridge-dc-stepper-motor-driver-breakout
+ * (note i was unable to find an Adafruit library for this device running on Arduino IDE)
+ * 
 *****************************************************************************
 */
 
