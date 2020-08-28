@@ -11,8 +11,8 @@ Video of dispenser in action:  https://youtu.be/iYxsz3DUehM
 
 ### Bill of Materials
 
-Description | Supplier|Notes
------------ | -------------- 
+| Description | Supplier | Notes |
+| ----------- | -------- | ----- | 
 | [ItsyBitsy 32u4 5v](https://www.adafruit.com/product/3677) | Adafruit | must be 5v version for power supply [Guide](https://learn.adafruit.com/introducting-itsy-bitsy-32u4/overview) |
 | [TB6612 Motor Driver](https://www.adafruit.com/product/2448) | Adafruit | [Guide](https://learn.adafruit.com/adafruit-tb6612-h-bridge-dc-stepper-motor-driver-breakout) |
 | [VCNL 4040 Lux/Proximity Sensor](https://learn.adafruit.com/adafruit-vcnl4040-proximity-sensor/) | Adafruit | [Guide](https://www.adafruit.com/product/4161)
@@ -28,5 +28,6 @@ Description | Supplier|Notes
 | M3 x 8mm screws | | 8 pcs (lid-to-box, hose clamps to tower) |
 | M3 x 6mm screws | | 4 pcs (to mount PCB) |
 | M2.5 x 6mm screws | | 4 pcs (for Proximity Sensor) |
-| M3 Threaded Insert | McMaster-Carr | 14 pcs (lid-to-box, hose clamps, pump, PCB-to-box) |
-| M2.5 Threaded Insert | McMaster-Carr | 4 pcs (for Proximity Sensor) |
+| [M3 Threaded Insert](https://www.mcmaster.com/94459A130/) | McMaster-Carr | 14 pcs (lid-to-box, hose clamps, pump, PCB-to-box) |
+| [M2.5 Threaded Insert](https://www.amazon.com/Products-Insert-Heat-Sink-Injection/dp/B07HKT5W7S/) | Amazon | 4 pcs (for Proximity Sensor) |
+| Glass Jelly Jar | local grocery | standard 1-pint jelly/jam jar as used for canning |
