@@ -70,40 +70,85 @@ Motor motor1 = Motor(AIN1, AIN2, PWMA, offsetA, STBY);
 
 Adafruit_VCNL4040 vcnl4040 = Adafruit_VCNL4040();
 
+int  hand_prox;
+bool dispensed_this_cycle, dispensed_last_cycle;
+
 void setup() {
   vcnl4040.begin();
 }
 
 void loop() {
-  int hand_prox;
+  
   
   //Serial.print("Proximity:"); Serial.println(vcnl4040.getProximity());
   //Serial.println("");
+  
+  /*
+   * note proximity value sits about 12-13 if no hand under sensor
+   * its about 30 at midrange and 100-200 at very top
+   *
+   * note speed can range from -255 to +255; 
+   * (-50) seems to be a pretty good compromise to avoid squirting
+   * big messes vs getting enough quickly enough to satisfy, YMMV
+   * 
+   * change sign if necessary to account for motor wiring polarity
+   * or hose routing
+   */
 
   hand_prox = vcnl4040.getProximity();
   if (hand_prox < 15) {
+    /* 
+     *  no hand sensed, so turn motor off
+     */
     noTone(TONEPIN);
     motor1.drive(0);
-      delay(200);
+    dispensed_this_cycle = false;
+    delay(200);
+      
   } else if (hand_prox < 20) {
-      tone(TONEPIN, 1000, 50);
-      delay(100);
-  } else  {
-      tone(TONEPIN, 2000, 100);
+    /* 
+     *  hand under sensor, near bottom, give SLOW feed
+     */
+    tone(TONEPIN, 1000, 50);
+    motor1.drive(-50);      
+    delay(300);
+    motor1.drive(0);
+    dispensed_this_cycle = true;
+    delay(100);
+      
+  } else if (hand_prox < 120) {
+    /* 
+     *  hand midrange, give FASTER feed
+     */
+    tone(TONEPIN, 1500, 50);
+    motor1.drive(-75);      
+    delay(500);
+    motor1.drive(0);
+    dispensed_this_cycle = true;
+    delay(100);
+    
+  } else {
+    /* 
+     *  hand at very top, give SUPERFAST priming feed
+     */
+    tone(TONEPIN, 2000, 100);
+    motor1.drive(-150);      
+    delay(400);
+    motor1.drive(0);
+    dispensed_this_cycle = true;
+    delay(50);
+  }
+  
+  if (dispensed_last_cycle && !dispensed_this_cycle) {
       /*
-       * note speed can range from -255 to +255; 
-       * (-50) seems to be a pretty good compromise to avoid squirting
-       * big messes vs getting enough quickly enough to satisfy, YMMV
-       * 
-       * change sign if necessary to account for motor wiring polarity
-       * or hose routing
+       * when hand LEAVES, suck some fluid back to stop drips
        */
-      motor1.drive(-50);      
-      delay(300);
-      motor1.drive(0);
-      delay(100);
+       motor1.drive(+60);      
+       delay(500);
+       motor1.drive(0);       
   }
 
   
+  dispensed_last_cycle = dispensed_this_cycle;
   delay(50);
 }

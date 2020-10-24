@@ -26,7 +26,7 @@ Video of dispenser in action:  https://youtu.be/iYxsz3DUehM
 | [Pin Header strip (male)](https://www.adafruit.com/product/392) | Adafruit | need to cut 3-pin, and 4-pin sections |
 | [2-pin Dupont Connector body](https://www.amazon.com/Hilitchi-2-54mm-Headers-Connector-Housing/dp/B012EOO9Q0/) | Amazon | with female pins (note this assortment has 2- and 4- pin bodies as well as male pin header strip; you will need a [crimper](https://www.adafruit.com/product/350) to assemble these)|
 | [4-pin Dupont Connector body](https://www.amazon.com/Hilitchi-2-54mm-Headers-Connector-Housing/dp/B012EOO9Q0/) | Amazon | with female pins |
-| M3 x 8mm screws | Amazon | 8 pcs (lid-to-box, hose clamps to tower) |
+| M3 x 8mm screws | Amazon | 12 pcs (lid-to-box, hose clamps to tower, tower-to-lid) |
 | M3 x 6mm screws | Amazon | 4 pcs (to mount PCB) |
 | M2.5 x 6mm screws | Amazon | 4 pcs (for Proximity Sensor) |
 | [M3 Threaded Insert](https://www.mcmaster.com/94459A130/) | McMaster-Carr | 14 pcs (lid-to-box, hose clamps, pump, PCB-to-box) |
