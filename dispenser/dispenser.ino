@@ -77,8 +77,7 @@ void setup() {
   vcnl4040.begin();
 }
 
-void loop() {
-  
+void loop() {  
   
   //Serial.print("Proximity:"); Serial.println(vcnl4040.getProximity());
   //Serial.println("");
@@ -96,14 +95,14 @@ void loop() {
    */
 
   hand_prox = vcnl4040.getProximity();
+  
   if (hand_prox < 15) {
     /* 
-     *  no hand sensed, so turn motor off
+     *  no hand sensed, so just ensure motor is off
      */
     noTone(TONEPIN);
     motor1.drive(0);
     dispensed_this_cycle = false;
-    delay(200);
       
   } else if (hand_prox < 20) {
     /* 
@@ -122,10 +121,10 @@ void loop() {
      */
     tone(TONEPIN, 1500, 50);
     motor1.drive(-75);      
-    delay(500);
+    delay(300);
     motor1.drive(0);
     dispensed_this_cycle = true;
-    delay(100);
+    delay(25);
     
   } else {
     /* 
@@ -143,12 +142,20 @@ void loop() {
       /*
        * when hand LEAVES, suck some fluid back to stop drips
        */
-       motor1.drive(+60);      
+       motor1.drive(+70);      
        delay(500);
        motor1.drive(0);       
   }
 
   
   dispensed_last_cycle = dispensed_this_cycle;
-  delay(50);
+
+  /*
+   * finally, ensure that there's at least a little
+   * bit of delay this loop - just to give the 
+   * processor a little time to breath...  :-)
+   */
+  if (!dispensed_this_cycle) {
+    delay(50);
+  }
 }
