@@ -8,6 +8,7 @@
 Hand Sanitizer (or soap) dispenser uses peristaltic pump to dispense fluid when Adafruit VCNL Optical Proximity Sensor observes hand under dispensing tube.  Code runs on an Adafruit ItsyBitsy 32u4 5v version (which may be powered by 12v Vbat) and is coded in Arduino IDE.  This is all packaged in a 3d printed container, and uses a standard Jelly Jar to hold the fluid.
 
 Video of dispenser in action:  https://youtu.be/iYxsz3DUehM 
+
 Photo Album: https://photos.app.goo.gl/EdRW3g8P56AdBAn6A
 
 Some photos of the device are in the "photos" folder here on github; a larger collection is available in the linked photo album.  The Arduino software is in the "dispenser" folder here.  Printed Circuit board gerber files and schematic are in the "hardware" folder.  Note that it is important to use only the 5 Volt version of the 32u4 Itsy Bitsy, as this device allows a wider range of power input (the 5v 32u4 allows up to 16 volts input, but the normal ones only allow 6v input.  This circuit powers the Itsy Bitsy from the same 12v power block that runs the motor).
@@ -40,9 +41,8 @@ The device plays a series of beeps through the included speaker while it is disp
 | [M2.5 Threaded Insert](https://www.amazon.com/Products-Insert-Heat-Sink-Injection/dp/B07HKT5W7S/) | Amazon | 4 pcs (for Proximity Sensor) |
 | Glass Jelly Jar | local grocery | standard 1-pint jelly / jam jar as used for canning |
 
-### 3d Printed Parts
 
 ### Printed Circuit Board
 <h1 align="center">
-	<img width="480" src="https://github.com/dnkorte/sanitizer/blob/master/hardware/pHand_Sanitizer_PCB_top.png" alt="Picture of Hand Sanitizer Dispenser">
+	<img width="480" src="https://github.com/dnkorte/sanitizer/blob/master/hardware/Hand_Sanitizer_PCB_top.png" alt="Picture of Hand Sanitizer Dispenser">
 </h1>
