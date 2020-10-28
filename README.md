@@ -11,7 +11,9 @@ Video of dispenser in action:  https://youtu.be/iYxsz3DUehM
 
 Photo Album: https://photos.app.goo.gl/EdRW3g8P56AdBAn6A
 
-Some photos of the device are in the "photos" folder here on github; a larger collection is available in the linked photo album.  The Arduino software is in the "dispenser" folder here.  Printed Circuit board gerber files and schematic are in the "hardware" folder.  Note that it is important to use only the 5 Volt version of the 32u4 Itsy Bitsy, as this device allows a wider range of power input (the 5v 32u4 allows up to 16 volts input, but the normal ones only allow 6v input.  This circuit powers the Itsy Bitsy from the same 12v power block that runs the motor).
+Thingiverse with STLs: https://www.thingiverse.com/thing:4636984
+
+Some photos of the device are in the "photos" folder here on github; a larger collection is available in the linked photo album.  The Arduino software is in the "dispenser" folder here.  Printed Circuit board gerber files and schematic are in the "hardware" folder. STLs for 3d pringing are available in the "3d_printer_stls" folder and also on Thingiverse.   Note that it is important to use only the 5 Volt version of the 32u4 Itsy Bitsy, as this device allows a wider range of power input (the 5v 32u4 allows up to 16 volts input, but the normal ones only allow 6v input.  This circuit powers the Itsy Bitsy from the same 12v power block that runs the motor).
 
 The device is setup with 3 "zones" for hand position under the nozzle, each of which triggers a different speed of pump.  If you put your hand in the window close to the bottom it provides a pretty slow and "intermittent" pumping action.  Mid-range hand pumps more quickly and gives a more satisying amount of sanitizer for normal use.  If you move your hand up to the very top of the range (almost touching the top) it turns on motor at high speed -- this is good for priming the pump after it sits for a long time or if you've just refilled the jar.  Note that no matter which zone you use, when you pull your hand out of the dispense area it runs the pump backwards for a short period to reduce the amount of drippage.  
 
