@@ -8,6 +8,13 @@
 Hand Sanitizer (or soap) dispenser uses peristaltic pump to dispense fluid when Adafruit VCNL Optical Proximity Sensor observes hand under dispensing tube.  Code runs on an Adafruit ItsyBitsy 32u4 5v version (which may be powered by 12v Vbat) and is coded in Arduino IDE.  This is all packaged in a 3d printed container, and uses a standard Jelly Jar to hold the fluid.
 
 Video of dispenser in action:  https://youtu.be/iYxsz3DUehM 
+Photo Album: https://photos.app.goo.gl/EdRW3g8P56AdBAn6A
+
+Some photos of the device are in the "photos" folder here on github; a larger collection is available in the linked photo album.  The Arduino software is in the "dispenser" folder here.  Printed Circuit board gerber files and schematic are in the "hardware" folder.  Note that it is important to use only the 5 Volt version of the 32u4 Itsy Bitsy, as this device allows a wider range of power input (the 5v 32u4 allows up to 16 volts input, but the normal ones only allow 6v input.  This circuit powers the Itsy Bitsy from the same 12v power block that runs the motor).
+
+The device is setup with 3 "zones" for hand position under the nozzle, each of which triggers a different speed of pump.  If you put your hand in the window close to the bottom it provides a pretty slow and "intermittent" pumping action.  Mid-range hand pumps more quickly and gives a more satisying amount of sanitizer for normal use.  If you move your hand up to the very top of the range (almost touching the top) it turns on motor at high speed -- this is good for priming the pump after it sits for a long time or if you've just refilled the jar.  Note that no matter which zone you use, when you pull your hand out of the dispense area it runs the pump backwards for a short period to reduce the amount of drippage.  
+
+The device plays a series of beeps through the included speaker while it is dispensing.  
 
 ### Bill of Materials
 
@@ -36,3 +43,6 @@ Video of dispenser in action:  https://youtu.be/iYxsz3DUehM
 ### 3d Printed Parts
 
 ### Printed Circuit Board
+<h1 align="center">
+	<img width="480" src="https://github.com/dnkorte/sanitizer/blob/master/hardware/pHand_Sanitizer_PCB_top.png" alt="Picture of Hand Sanitizer Dispenser">
+</h1>
