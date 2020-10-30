@@ -11,6 +11,12 @@
  * is coded in Arduino IDE. This is all packaged in a 3d printed box, and uses 
  * a standard Jelly Jar to hold the fluid.
  * 
+ * Rev 30-Oct-2020 
+ *  changed from 3-speed zones to 1-zone with pump speed that varies 
+ *  according to duration of dispense -- it starts out fast, then after
+ *  4 cycles it slows down for duration of dispense.  this reduces
+ *  the amount of drippage
+ * 
  * this code requires SparkFun TB6612FNG library for Arduino
  * https://github.com/sparkfun/SparkFun_TB6612FNG_Arduino_Library
  * https://github.com/sparkfun/SparkFun_TB6612FNG_Arduino_Library/blob/master/src/SparkFun_TB6612.h
@@ -52,6 +58,12 @@
 #include <SparkFun_TB6612.h>
 #define TONEPIN 5
 
+// either 1 or -1 depending on motor wiring polarity
+#define DIRECTION -1   
+
+// duration of initial fast pumping allowance
+#define ALLOWED_FAST_CYCLES 4   
+
 // Pins for all inputs, keep in mind the PWM defines must be on PWM pins
 #define AIN1 11
 #define AIN2 10
@@ -73,8 +85,11 @@ Adafruit_VCNL4040 vcnl4040 = Adafruit_VCNL4040();
 int  hand_prox;
 bool dispensed_this_cycle, dispensed_last_cycle;
 
+int  fast_cycles_left;
+
 void setup() {
   vcnl4040.begin();
+  fast_cycles_left = ALLOWED_FAST_CYCLES;
 }
 
 void loop() {  
@@ -103,46 +118,40 @@ void loop() {
     noTone(TONEPIN);
     motor1.drive(0);
     dispensed_this_cycle = false;
-      
-  } else if (hand_prox < 20) {
-    /* 
-     *  hand under sensor, near bottom, give SLOW feed
-     */
-    tone(TONEPIN, 1000, 50);
-    motor1.drive(-50);      
-    delay(300);
-    motor1.drive(0);
-    dispensed_this_cycle = true;
-    delay(100);
-      
-  } else if (hand_prox < 120) {
-    /* 
-     *  hand midrange, give FASTER feed
-     */
-    tone(TONEPIN, 1500, 50);
-    motor1.drive(-75);      
-    delay(300);
-    motor1.drive(0);
-    dispensed_this_cycle = true;
-    delay(25);
-    
+    fast_cycles_left = ALLOWED_FAST_CYCLES;
+        
   } else {
-    /* 
-     *  hand at very top, give SUPERFAST priming feed
-     */
-    tone(TONEPIN, 2000, 100);
-    motor1.drive(-150);      
-    delay(400);
-    motor1.drive(0);
-    dispensed_this_cycle = true;
-    delay(50);
-  }
+    
+    if (fast_cycles_left > 0) {
+      fast_cycles_left--;
+      /* 
+       *  just starting to dispense, so go fast
+       */
+      tone(TONEPIN, 1500, 50);
+      motor1.drive(90 * DIRECTION);      
+      delay(300);
+      motor1.drive(0);
+      dispensed_this_cycle = true;
+      delay(50);
+    } else {
+      /* 
+       * we've been dispensing for a while, so slow down 
+       */
+      tone(TONEPIN, 1000, 50);
+      motor1.drive(50 * DIRECTION);      
+      delay(300);
+      motor1.drive(0);
+      dispensed_this_cycle = true;
+      delay(200);
+     }
+    
+  } 
   
   if (dispensed_last_cycle && !dispensed_this_cycle) {
       /*
        * when hand LEAVES, suck some fluid back to stop drips
        */
-       motor1.drive(+70);      
+       motor1.drive( (-70) * DIRECTION );      
        delay(500);
        motor1.drive(0);       
   }
