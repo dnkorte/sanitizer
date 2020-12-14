@@ -129,20 +129,20 @@ void loop() {
        */
       tone(TONEPIN, 1500, 50);
       motor1.drive(90 * DIRECTION);      
-      delay(300);
+      delay(500);
       motor1.drive(0);
       dispensed_this_cycle = true;
-      delay(50);
+      delay(25);
     } else {
       /* 
        * we've been dispensing for a while, so slow down 
        */
       tone(TONEPIN, 1000, 50);
-      motor1.drive(50 * DIRECTION);      
+      motor1.drive(70 * DIRECTION);      
       delay(300);
       motor1.drive(0);
       dispensed_this_cycle = true;
-      delay(200);
+      delay(100);
      }
     
   } 
@@ -151,8 +151,8 @@ void loop() {
       /*
        * when hand LEAVES, suck some fluid back to stop drips
        */
-       motor1.drive( (-70) * DIRECTION );      
-       delay(500);
+       motor1.drive( (-90) * DIRECTION );      
+       delay(700);
        motor1.drive(0);       
   }
 
